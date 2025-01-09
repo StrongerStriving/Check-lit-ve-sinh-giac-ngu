@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Check list Vệ Sinh Giấc Ngủ</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      line-height: 1.6;
+    }
+    h1, h2 {
+      text-align: center;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background-color: #f4f4f4;
+    }
+    td:first-child {
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    td input {
+      transform: scale(1.2);
+      cursor: pointer;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .result, .chart-container {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #333;
+    }
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 5px;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Theo Dõi Vệ Sinh Giấc Ngủ</h1>
+  <p>Hãy đánh giá các thói quen vệ sinh giấc ngủ của bạn hôm qua.</p>
+
+  <label for="date">Ngày đánh giá:</label>
+  <input type="date" id="date" required>
+  <table>
+    <thead>
+      <tr>
+        <th>Thói quen</th>
+        <th>Có</th>
+        <th>Không</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <img src="https://via.placeholder.com/40" alt="Giường ngủ">
+          “Giường ngủ chỉ dành cho việc ngủ”. Không làm việc, giải trí, ăn uống trên giường.
+        </td>
+        <td><input type="radio" name="habit1" value="yes"></td>
+        <td><input type="radio" name="habit1" value="no"></td>
+      </tr>
+      <tr>
+        <td>
+          <img src="https://via.placeholder.com/40" alt="Tập thể dục">
+          Tập thể dục đều đặn (ít nhất 30 phút/ngày x 3 ngày/tuần).
+        </td>
+        <td><input type="radio" name="habit2" value="yes"></td>
+        <td><input type="radio" name="habit2" value="no"></td>
+      </tr>
+      <tr>
+        <td>
+          <img src="https://via.placeholder.com/40" alt="Ánh sáng tự nhiên">
+          Để mắt tiếp xúc với ánh sáng tự nhiên ít nhất 60 phút/ngày.
+        </td>
+        <td><input type="radio" name="habit3" value="yes"></td>
+        <td><input type="radio" name="habit3" value="no"></td>
+      </tr>
+      <tr>
+        <td>
+          <img src="https://via.placeholder.com/40" alt="Giờ đi ngủ">
+          Giữ giờ đi ngủ và giờ thức dậy giống nhau mỗi ngày, kể cả vào cuối tuần.
+        </td>
+        <td><input type="radio" name="habit4" value="yes"></td>
+        <td><input type="radio" name="habit4" value="no"></td>
+      </tr>
+      <tr>
+        <td>
+          <img src="https://via.placeholder.com/40" alt="Ngủ trưa">
+          Chỉ ngủ trưa ít hơn 45 phút.
+        </td>
+        <td><input type="radio" name="habit5" value="yes"></td>
+        <td><input type="radio" name="habit5" value="no"></td>
+      </tr>
+      <tr>
+        <td>
+          <img src="https://via.placeholder.com/40" alt="Caffein">
+          Không dùng cà phê, trà, các chất có chứa caffein, rượu bia và các chất kích thích sau 15 giờ.
+        </td>
+        <td><input type="radio" name="habit6" value="yes"></td>
+        <td><input type="radio" name="habit6" value="no"></td>
+      </tr>
+      <tr>
+        <td>
+          <img src="https://via.placeholder.com/40" alt="Ánh sáng xanh">
+          Hạn chế tiếp xúc với ánh sáng xanh từ màn hình điện tử; bật chế độ lọc ánh sáng xanh/bảo vệ mắt từ sau 20g.
+        </td>
+        <td><input type="radio" name="habit7" value="yes"></td>
+        <td><input type="radio" name="habit7" value="no"></td>
+      </tr>
+      <tr>
+        <td>
+          <img src="https://via.placeholder.com/40" alt="Ăn uống">
+          Không ăn quá no, không tập thể dục mạnh trong 1 tiếng gần giờ ngủ.
+        </td>
+        <td><input type="radio" name="habit8" value="yes"></td>
+        <td><input type="radio" name="habit8" value="no"></td>
+      </tr>
+      <tr>
+        <td>
+          <img src="https://via.placeholder.com/40" alt="Không gian ngủ">
+          Chuẩn bị không gian thư giãn, dễ chịu cho việc ngủ: giường ngủ sạch sẽ, mùi hương dịu nhẹ, âm thanh êm dịu, hạn chế tiếng ồn, hạn chế ánh sáng.
+        </td>
+        <td><input type="radio" name="habit9" value="yes"></td>
+        <td><input type="radio" name="habit9" value="no"></td>
+      </tr>
+      <tr>
+        <td>
+          <img src="https://via.placeholder.com/40" alt="Thư giãn">
+          Thực hiện bài tập thư giãn: tự massage, thiền, căng-chùng cơ, viết xuống những suy nghĩ…
+        </td>
+        <td><input type="radio" name="habit10" value="yes"></td>
+        <td><input type="radio" name="habit10" value="no"></td>
+      </tr>
+      <tr>
+        <td>
+          <img src="https://via.placeholder.com/40" alt="Buồn ngủ">
+          Chỉ lên giường khi đã buồn ngủ. Nếu ở trên giường quá 30 phút mà chưa ngủ được, hãy ngồi dậy làm việc nhẹ nhàng, thư giãn, đến khi buồn ngủ mới quay lại giường.
+        </td>
+        <td><input type="radio" name="habit11" value="yes"></td>
+        <td><input type="radio" name="habit11" value="no"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div>
+    <label for="sleep-quality">Bạn đánh giá chất lượng giấc ngủ hôm qua thế nào? (0: rất tệ, 10: rất tốt):</label>
+    <input type="number" id="sleep-quality" min="0" max="10">
+  </div>
+
+  <button onclick="submitData()">Lưu kết quả</button>
+
+  <div id="result" class="result hidden"></div>
+  <div class="chart-container">
+    <canvas id="chart" width="400" height="200"></canvas>
+  </div>
+
+  <script>
+    const data = JSON.parse(localStorage.getItem('sleepData')) || [];
+
+    function submitData() {
+      const date = document.getElementById('date').value;
+      if (!date) {
+        alert('Vui lòng chọn ngày đánh giá!');
+        return;
+      }
+
+      const habits = Array.from(document.querySelectorAll('input[type="radio"]:checked'))
+        .filter(input => input.value === 'yes').length;
+
+      const sleepQuality = document.getElementById('sleep-quality').value;
+      if (sleepQuality === '') {
+        alert('Vui lòng đánh giá chất lượng giấc ngủ!');
+        return;
+      }
+
+      data.push({ date, habits, sleepQuality: parseInt(sleepQuality) });
+      localStorage.setItem('sleepData', JSON.stringify(data));
+
+      document.getElementById('result').textContent = 
+        `Hôm qua bạn đã thực hiện ${habits} thói quen vệ sinh giấc ngủ. Hãy phát huy nghen!`;
+      document.getElementById('result').classList.remove('hidden');
+
+      drawChart();
+    }
+
+    function drawChart() {
+      const ctx = document.getElementById('chart').getContext('2d');
+      const labels = data.map(entry => entry.date);
+      const habitsData = data.map(entry => entry.habits);
+      const qualityData = data.map(entry => entry.sleepQuality);
+
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels,
+          datasets: [
+            {
+              label: 'Số lượng thói quen',
+              data: habitsData,
+              borderColor: 'blue',
+              fill: false,
+            },
+            {
+              label: 'Chất lượng giấc ngủ',
+              data: qualityData,
+              borderColor: 'green',
+              fill: false,
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            x: { title: { display: true, text: 'Ngày' } },
+            y: { title: { display: true, text: 'Điểm' } }
+          }
+        }
+      });
+    }
+
+    // Vẽ biểu đồ khi tải trang
+    window.onload = drawChart;
+  </script>
+</body>
+</html>
